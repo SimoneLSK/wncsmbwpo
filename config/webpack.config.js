@@ -25,6 +25,16 @@ const babelLoader = {
     }
 }
 
+const imageLoader = {
+    test: /\.(gif|jpe?g|png|svg)$/,
+    use: {
+        loader: 'file-loader',
+        options: {
+            name: '[name].[ext]',
+        },
+    },
+};
+
 const htmlLoader = {
     test: /\.html$/,
     use: [{
@@ -54,7 +64,7 @@ module.exports = {
             path: path.resolve(appRoot, 'public'),
         },
         module: {
-            rules: [babelLoader, htmlLoader],
+            rules: [babelLoader, htmlLoader, imageLoader],
         },
         resolve: {
             modules: ['node_modules'],
